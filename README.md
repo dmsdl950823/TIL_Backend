@@ -18,11 +18,13 @@ BackEnd based TIL - BackEnd 위주 TIL 작성
 ### PostgreSQL
 ### MySQL
 ### MongoDB
+  * [210218 _ Mongodb](https://github.com/dmsdl950823/TIL_Backend/blob/main/DBMS/Mongodb/210218_Mongodb.md)
 
 <br>
 
 ## 🥨Cloud
 ### AWS
+  * [210218 AWS Setting](https://github.com/dmsdl950823/TIL_Backend/blob/main/Cloud/AWS/210218_AWS%20setting.md) 부가 정보 필요
 
 ---------------------------
 
