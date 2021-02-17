@@ -1,11 +1,7 @@
 # TIL_Backend
 BackEnd based TIL - BackEnd 위주 TIL 작성
 
-<br>
-
 ------------------
-
-<br>
 
 ## 🥨 Language
 ### Java
@@ -26,11 +22,7 @@ BackEnd based TIL - BackEnd 위주 TIL 작성
 ## 🥨Cloud
 ### AWS
 
-<br>
-
 ---------------------------
-
-<br>
 
 ## 정리 필요한것 정리
 * Azure
