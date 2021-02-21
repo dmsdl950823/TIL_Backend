@@ -17,6 +17,8 @@ BackEnd based TIL - BackEnd 위주 TIL 작성
 ## 🥨 DBMS
 ### PostgreSQL
 ### MySQL
+  * [210221 _ MySQL basic](https://github.com/dmsdl950823/TIL_Backend/blob/main/DBMS/MySQL/210221_MySQL%20basic.md) 
+  * [210221 _ MySQL query](https://github.com/dmsdl950823/TIL_Backend/blob/main/DBMS/MySQL/210221_MySQL%20query.md)
 ### MongoDB
   * [210218 _ Mongodb](https://github.com/dmsdl950823/TIL_Backend/blob/main/DBMS/Mongodb/210218_Mongodb.md)
 
