@@ -47,7 +47,10 @@ BackEnd based TIL - BackEnd 위주 TIL 작성
 ### AWS
 
 * [210218 AWS Setting](https://github.com/dmsdl950823/TIL_Backend/blob/main/Cloud/AWS/210218_AWS%20setting.md) 부가 정보 필요
-* [210506 _ Cloud 환경 및 서비스](Cloud/AWS/210506_Cloud%20환경%20및%20서비스.md)
+
+### Notion
+
+* [210506 _ Cloud 환경 및 서비스](Cloud/Notion/210506_Cloud%20환경%20및%20서비스.md)
 
 ---------------------------
 
