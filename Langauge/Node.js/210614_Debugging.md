@@ -30,7 +30,7 @@
 
 노드는 GDB 를 이용한 디버그 모드를 지원합니다. 노드를 디버그 모드로 실행하면 디버거로 연결해 디버깅 할 수 있습니다.
 
-[노드 인스펙터](https://github.com/nodejs/node-inspect) 는 웹킷 기반 웹 브라우저(safari, chrome) 에 있는 개발자 도구에 기반을 둔 노드 디버거입니다. 클라이언트 자바스크립트 개발에서 웹킷의 개발자 도구를 사용해본 경험이 있다면 익숙하게 사용할 수 있습니다.
+[노드 인스펙터](https://github.com/nodejs/node-inspect) 는 웹킷 기반 **웹 브라우저(safari, chrome) 에 있는 개발자 도구에 기반을 둔 노드 디버거**입니다. 클라이언트 자바스크립트 개발에서 웹킷의 개발자 도구를 사용해본 경험이 있다면 익숙하게 사용할 수 있습니다.
 
 노드 인스펙터를 이용하면 노드 앱을 수정하지않고도 실행중에 중단점을 지정해 각 객체의 상태를 확인할 수 있어 편리합니다.
 
@@ -41,5 +41,22 @@
     $ node --debug-brk <testfile>  # 디버거 라인에서 진행하지않고 대기
     $ node --debug <testfile>   # 종료하지 않고 계속 진행하면서 디버깅을 하는 방법
     # $ node --inspect <file>   # Chrome inspector protocol 전용
+
+    $ node-inspector &   # 노드 인스펙터 실행
 ```
 
+디버깅을 위해 코드에 중단점 (breakpoint) 를 설정할 수도 있습니다.
+
+breakpoint 를 지정하고 `Pause the script execution` 버튼(⏸) 을 실행시키면 코드가 이어서 실행되다, 해당 라인에서 중지됩니다.
+
+| 버튼 이름                          | 설명                                                    |
+| ---------------------------------- | ------------------------------------------------------- |
+| `Pause the script execution` (⏸)   | 스크립트 중단 / 재실행                                  |
+| `Step over next function call` (🔂) | 한줄씩 차례대로 실행 - 현재 소스와 같은 계층에서만 이동 |
+| `Step into next function call` (⬇) | 함수의 내부까지 이동                                    |
+| `Step out current function` (⬆)    | 함수의 내부까지 이동                                    |
+| `Deactive all breakpoints`         |                                                         |
+|                                    |                                                         |
+| `Call Stack` Tab                   | 함수의 호출 스택을 보여줌                               |
+| `Scope Variable` Tab               | 현재 멈춰진 부분에서 접근할 수 있는 변수를 보여줌       |
+| `Script` Tab                       | 콘솔 확인 - 다양한 테스트 가능                          |
