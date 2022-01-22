@@ -95,34 +95,45 @@ var isPalindrome = function(l1, l2) {
  * @param {ListNode} head
  * @return {boolean}
  */
- var isPalindrome = function(l1, l2) {
-    
-    let sum = 0
-    let current = new ListNode(0)
+var isPalindrome = function(l1, l2) {
+  let sum = 0
+  let current = new ListNode(0) // 처음 기본 노드 세팅
 
-    let result = current
+  let result = current
 
-    while (l1 || l2) {
-        if (l1) {
-            sum += l1.val
-            l1 = l1.next
-        }
-
-        if (l2) {
-            sum += l2.val
-            l2 = l2.next
-        }
-
-        current.next = new ListNode(sum % 10)
-        current = current.next
-
-        sum = sum > 9 ? 1 : 0
+  while (l1 || l2) {
+    if (l1) {
+      sum += l1.val  // 현재 값
+      l1 = l1.next
     }
 
-    if (sum) {
-        current.next = new ListNode(sum)
+    if (l2) {
+      sum += l2.val  // 현재 노드의 값끼리 합산
+      l2 = l2.next
     }
 
-    return result.next
+    current.next = new ListNode(sum % 10) // 10 이상이라면 1의 자리 수 만 가져옴
+    current = current.next
+
+
+    sum = sum > 9 ? 1 : 0
+  }
+
+  return result
 }
+```
+
+``` 
+1)
+  sum += l1.val + l2.val ▶ 0 + 2 + 5 = 7
+  current.next = 7 % 10 = 7
+  sum = 7 > 9 ▶ 0
+2)
+  sum += l1.val + l2.val ▶ 0 + 4 + 6 = 10
+  current.next = 10 % 10 = 0
+  sum = 10 > 9 ▶ 1
+3)
+  sum += l1.val + l2.val ▶ 1 + 3 + 4 = 8
+  current.next = 10 % 8 = 8
+  sum = 8 > 9 ▶ 0
 ```
