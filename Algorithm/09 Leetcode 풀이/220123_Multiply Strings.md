@@ -116,54 +116,51 @@ multiply('9', '99')
  * @param {string} num2
  * @return {string}
  */
-var multiply = function(num1, num2) {    
-    if (num1 === "0" || num2 === "0") {
-        return "0"
-    }
-        
-    let firstNumber = [...num1]
-    let secondNumber = [...num2]
-    
-    // Reverse both the numbers.
-    firstNumber.reverse()
-    secondNumber.reverse()
+ var multiply = function(num1, num2) {    
+  if (num1 === '0' || num2 === '0') return '0'
+      
+  let first = [...num1]
+  let second = [...num2]
+  
+  first.reverse()
+  second.reverse()
 
-    // To store the multiplication result of each digit of secondNumber with firstNumber.
-    let N = firstNumber.length + secondNumber.length
-    let answer = new Array(N).fill(0)
-        
-    for (let place2 = 0; place2 < secondNumber.length; place2++) {
-        let digit2 = Number(secondNumber[place2])
+  // num1, num2 각각의 숫자를 곱한 결과를 저장합니다.
+  let N = first.length + second.length
+  let answer = new Array(N).fill(0)
+      
+  for (let place2 = 0; place2 < second.length; place2++) {
+      let digit2 = Number(second[place2]) // ===> two
 
-        // For each digit in secondNumber multiply the digit by all digits in firstNumber.
-        for (let place1 = 0; place1 < firstNumber.length; place1++) {
-            let digit1 = Number(firstNumber[place1])
+      // For each digit in second multiply the digit by all digits in first.
+      for (let place1 = 0; place1 < first.length; place1++) {
+          let digit1 = Number(first[place1])
+          console.log(place1, place2)
 
-            // The number of zeros from multiplying to digits depends on the 
-            // place of digit2 in secondNumber and the place of the digit1 in firstNumber.
-            let currentPos = place1 + place2
+          // The number of zeros from multiplying to digits depends on the 
+          // place of digit2 in second and the place of the digit1 in first.
+          // 곱하기부터 숫자까지의 0의 수는 다음 값에 따라 달라집니다.
+          // 숫자2의 위치는 두 번째이고 숫자1의 위치는 첫 번째입니다.
+          let currentPos = place1 + place2
 
-            // The digit currently at position currentPos in the answer string
-            // is carried over and summed with the current result.
-            let carry = answer[currentPos]
-            let multiplication = digit1 * digit2 + carry
+          // currentPost 위치의 현재 숫자는 현재 결과와 더해집니다.
+          let carry = answer[currentPos]
+          let multiplication = digit1 * digit2 + carry
 
-            // Set the ones place of the multiplication result.
-            answer[currentPos] = multiplication % 10
+          // Set the ones place of the multiplication result.
+          answer[currentPos] = multiplication % 10
 
-            // Carry the tens place of the multiplication result by 
-            // adding it to the next position in the answer array.
-            answer[currentPos + 1] += Math.floor(multiplication / 10);
-        }
-    }
+          // Carry the tens place of the multiplication result by 
+          // adding it to the next position in the answer array.
+          answer[currentPos + 1] += Math.floor(multiplication / 10);
+      }
+  }
 
-    if (answer[answer.length - 1] == 0) {
-        answer.pop()
-    }
+  if (answer[answer.length - 1] == 0) answer.pop()
 
-    // Ans is in the reversed order.
-    // Reverse it to get the final ans.
-    answer.reverse()
-    return answer.join('')
+  // Ans is in the reversed order.
+  // Reverse it to get the final ans.
+  answer.reverse()
+  return answer.join('')
 }
 ```
