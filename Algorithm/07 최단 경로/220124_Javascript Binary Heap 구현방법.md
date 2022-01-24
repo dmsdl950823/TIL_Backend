@@ -67,7 +67,98 @@ export class MinHeap {
 
 ### 삽입
 
+힙에서, 각 요소는 완벽한 이진 트리 형식으로 구성되어 삽입됩니다. 새로운 요소를 배열에 추가하면 됩니다.
+
+그런 다음, 노드를 "버블링" Bubble Up 하도록 합니다. 이것은 간단하게 부모 노드가 새롭게 삽입된 노드보다 작거나 같으면 둘을 바꾸는 것입니다.
+
+``` js
+export class MinHeap {
+  constructor (selector) {
+    this.items = []
+    this.selector = selector
+  }
+
+  insert () {
+    let i = this.items.length
+    this.items.push(item)
+    let parentIndex = Math.floor((i + 1) / 2 - 1)
+
+    if (parentIndex < 0) parentIndex = 0
+
+    let parentVal = this.selector(this.items[parentIndex])
+    const pushedVal = this.selector(this.items[i])
+
+    while (i > 0 && parentVal > pushedVal) {
+      parentIndex = Math.floor((i + 1) / 2 - 1)
+      this.swap(i, parentIndex)
+      i = parentIndex
+      parentVal = this.selector(
+        this.items[Math.max(Math.floor((i + 1) / 2 - 1), 0)]
+      )
+    }
+  }
+}
+```
+
+
 ### 삭제
 
+힙에서 요소를 삭제하는 방법은 삭제 후 힙을 조정하는 것입니다. 그를 위해서는, 1. 완벽한 이진트리 형식을 유지해야합니다. 2. 타당힌 최소 힙 형태를 유지해야합니다.
+
+이것은 힙의 마지막 요소(가장 큰 요소)가 가장 루트노드에 위치하게 하면서, \
+최소 힙을 유지하기 위해 위에서 아래로 "버블링" Bubble Down 하도록 합니다.
+
+``` js
+export class MinHeap {
+  constructor (selector) {
+    this.items = []
+    this.selector = selector
+  }
+
+  remove () {
+    if (this.items.length <= 1) return this.items.pop()
+
+    const ret = this.items[0]
+    let temp = this.items.pop()
+
+    this.items[0] = temp
+
+    let i = 0 // top 에서 down 으로 heap을 조정
+    while (true) {
+      let rightChildIndex = (i + 1) * 2
+      let leftChildIndex = (i + 1) * 2 - 1
+
+      let lowest = rightChildIndex
+
+      if (
+        leftChildIndex >= this.items.length &&
+        rightChildIndex >= this.items.length
+      ) break
+      
+      if (leftChildIndex >= this.items.length) lowest = rightChildIndex
+      if (rightChildIndex >= this.items.length) lowest = leftChildIndex
+
+      // 가장 작은 자식 찾기
+      if (
+        !(leftChildIndex >= this.items.length) &&
+        !(rightChildIndex >= this.items.length)
+      ) {
+        lowest = this.selector(this.items[rightChildIndex]) < this.selector(this.items[leftChildIndex]) ? rightChildIndex : leftChildIndex
+      }
+
+      // 만약 부모가 자식보다 더 큰 경우 (swap)
+      if (this.selector(this.items[i]) > this.selector(this.items[lowest])) {
+        this.swap(i, lowest)
+        i = lowest
+      } else {
+        break
+      }
+
+      // 가장 상단의 요소를 리턴
+      return ret
+    }
+  }
+}
+```
 
 
